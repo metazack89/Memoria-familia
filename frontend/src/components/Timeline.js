@@ -201,7 +201,7 @@ const Timeline = () => {
               
               <div>
                 <label className="block text-sm font-medium text-amber-700 mb-2">Mes</label>
-                <Select value={filtros.mes} onValueChange={(value) => setFiltros({ ...filtros, mes: value === "all" ? "" : value })}>
+                <Select value={filtros.mes || "all"} onValueChange={(value) => setFiltros({ ...filtros, mes: value === "all" ? "" : value })}>
                   <SelectTrigger className="input-warm" data-testid="month-filter">
                     <SelectValue placeholder="Todos los meses" />
                   </SelectTrigger>
