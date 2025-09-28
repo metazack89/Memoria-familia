@@ -147,13 +147,15 @@ const AlbumView = () => {
               Este álbum está esperando tus recuerdos. Sube fotos para comenzar a llenar
               este espacio con momentos especiales.
             </p>
-            <Button
-              onClick={() => setShowUploadDialog(true)}
-              className="btn-primary"
-              data-testid="upload-first-photos-button"
-            >
-              ✨ Subir Mis Primeras Fotos
-            </Button>
+            <PhotoUpload 
+              albumId={albumId}
+              onUploadComplete={handleUploadComplete}
+              triggerButton={
+                <Button className="btn-primary" data-testid="upload-first-photos-button">
+                  ✨ Subir Mis Primeras Fotos
+                </Button>
+              }
+            />
           </div>
         ) : (
           <div className="photo-grid" data-testid="photos-grid">
