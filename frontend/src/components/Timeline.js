@@ -186,12 +186,12 @@ const Timeline = () => {
               
               <div>
                 <label className="block text-sm font-medium text-amber-700 mb-2">Año</label>
-                <Select value={filtros.año} onValueChange={(value) => setFiltros({ ...filtros, año: value })}>
+                <Select value={filtros.año} onValueChange={(value) => setFiltros({ ...filtros, año: value === "all" ? "" : value })}>
                   <SelectTrigger className="input-warm" data-testid="year-filter">
                     <SelectValue placeholder="Todos los años" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Todos los años</SelectItem>
+                    <SelectItem value="all">Todos los años</SelectItem>
                     {años.map(año => (
                       <SelectItem key={año} value={año.toString()}>{año}</SelectItem>
                     ))}
@@ -201,12 +201,12 @@ const Timeline = () => {
               
               <div>
                 <label className="block text-sm font-medium text-amber-700 mb-2">Mes</label>
-                <Select value={filtros.mes} onValueChange={(value) => setFiltros({ ...filtros, mes: value })}>
+                <Select value={filtros.mes} onValueChange={(value) => setFiltros({ ...filtros, mes: value === "all" ? "" : value })}>
                   <SelectTrigger className="input-warm" data-testid="month-filter">
                     <SelectValue placeholder="Todos los meses" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Todos los meses</SelectItem>
+                    <SelectItem value="all">Todos los meses</SelectItem>
                     <SelectItem value="1">Enero</SelectItem>
                     <SelectItem value="2">Febrero</SelectItem>
                     <SelectItem value="3">Marzo</SelectItem>
