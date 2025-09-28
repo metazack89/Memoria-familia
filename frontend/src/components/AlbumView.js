@@ -17,14 +17,7 @@ const AlbumView = () => {
   const { api } = useContext(AuthContext);
   const [album, setAlbum] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [uploadLoading, setUploadLoading] = useState(false);
   const [error, setError] = useState('');
-  const [showUploadDialog, setShowUploadDialog] = useState(false);
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [uploadData, setUploadData] = useState({
-    descripcion: '',
-    lugar_nombre: ''
-  });
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   useEffect(() => {
