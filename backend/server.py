@@ -355,9 +355,19 @@ async def get_familia(current_user: User = Depends(get_current_user)):
     if not familia:
         raise HTTPException(status_code=404, detail="Familia no encontrada")
     
+    # Remover ObjectId para evitar problemas de serialización
+    if "_id" in familia:
+        del familia["_id"]
+    
     # Obtener miembros de la familia
     miembros = await db.usuarios.find({"familia_id": current_user.familia_id}).to_list(None)
-    familia["miembros"] = [User(**m).dict() for m in miembros]
+    miembros_limpio = []
+    for m in miembros:
+        if "_id" in m:
+            del m["_id"]
+        miembros_limpio.append(m)
+    
+    familia["miembros"] = miembros_limpio
     
     return familia
 
