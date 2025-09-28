@@ -124,6 +124,8 @@ function App() {
 
 function MainApp({ currentView, setCurrentView }) {
   const { user, logout } = React.useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="flex flex-col h-screen">
