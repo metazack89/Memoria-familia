@@ -123,102 +123,15 @@ const AlbumView = () => {
             </div>
           </div>
 
-          <Dialog open={showUploadDialog} onOpenChange={setShowUploadDialog}>
-            <DialogTrigger asChild>
+          <PhotoUpload 
+            albumId={albumId}
+            onUploadComplete={handleUploadComplete}
+            triggerButton={
               <Button className="btn-primary" data-testid="upload-photos-button">
                 📤 Subir Fotos
               </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="text-amber-900 font-heading">
-                  Subir Fotos al Álbum
-                </DialogTitle>
-                <DialogDescription>
-                  Selecciona las fotos que quieres agregar a "{album.titulo}"
-                </DialogDescription>
-              </DialogHeader>
-
-              <form onSubmit={handleUpload} className="space-y-4">
-                {error && (
-                  <Alert className="border-red-200 bg-red-50">
-                    <AlertDescription className="text-red-700">{error}</AlertDescription>
-                  </Alert>
-                )}
-
-                <div className="space-y-2">
-                  <Label htmlFor="photo-upload">Seleccionar fotos</Label>
-                  <Input
-                    id="photo-upload"
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleFileSelect}
-                    className="input-warm"
-                    required
-                    data-testid="photo-upload-input"
-                  />
-                  {selectedFiles.length > 0 && (
-                    <p className="text-sm text-amber-600">
-                      {selectedFiles.length} archivo{selectedFiles.length !== 1 ? 's' : ''} seleccionado{selectedFiles.length !== 1 ? 's' : ''}
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="upload-descripcion">Descripción (opcional)</Label>
-                  <Textarea
-                    id="upload-descripcion"
-                    placeholder="Describe estas fotos..."
-                    value={uploadData.descripcion}
-                    onChange={(e) => setUploadData({ ...uploadData, descripcion: e.target.value })}
-                    className="input-warm min-h-[60px]"
-                    data-testid="upload-descripcion-input"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="upload-lugar">Lugar (opcional)</Label>
-                  <Input
-                    id="upload-lugar"
-                    type="text"
-                    placeholder="¿Dónde se tomaron estas fotos?"
-                    value={uploadData.lugar_nombre}
-                    onChange={(e) => setUploadData({ ...uploadData, lugar_nombre: e.target.value })}
-                    className="input-warm"
-                    data-testid="upload-lugar-input"
-                  />
-                </div>
-
-                <div className="flex justify-end space-x-3 pt-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => setShowUploadDialog(false)}
-                    disabled={uploadLoading}
-                    className="btn-secondary"
-                  >
-                    Cancelar
-                  </Button>
-                  <Button
-                    type="submit"
-                    disabled={uploadLoading}
-                    className="btn-primary"
-                    data-testid="upload-submit-button"
-                  >
-                    {uploadLoading ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-                        Subiendo...
-                      </>
-                    ) : (
-                      'Subir Fotos'
-                    )}
-                  </Button>
-                </div>
-              </form>
-            </DialogContent>
-          </Dialog>
+            }
+          />
         </div>
 
         {/* Photos Grid */}
