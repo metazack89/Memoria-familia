@@ -1,7 +1,7 @@
 # 📸 Memoria Familia  
 
-Un **álbum digital en línea** donde los recuerdos de tu familia cobran vida.  
-Guarda, organiza y revive momentos especiales con fotos, historias y una línea del tiempo interactiva.  
+Un **álbum digital en línea personal** donde los recuerdos de tu familia cobran vida.  
+Guarda, organiza y revive momentos especiales con fotos, historias y una línea del tiempo interactiva creado con vibe coding.  
 
 ---
 
