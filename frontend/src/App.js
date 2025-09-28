@@ -188,7 +188,7 @@ function MainApp({ currentView, setCurrentView }) {
               </span>
             </div>
             <button
-              onClick={() => setCurrentView('familia')}
+              onClick={() => navigate('/familia')}
               className="p-2 text-amber-700 hover:bg-amber-100 rounded-lg transition-colors"
               title="Configuración de familia"
             >
