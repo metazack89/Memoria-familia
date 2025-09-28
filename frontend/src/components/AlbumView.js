@@ -9,6 +9,7 @@ import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Alert, AlertDescription } from './ui/alert';
 import { Badge } from './ui/badge';
+import PhotoUpload from './PhotoUpload';
 
 const AlbumView = () => {
   const { albumId } = useParams();
