@@ -145,9 +145,9 @@ function MainApp({ currentView, setCurrentView }) {
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <button
-              onClick={() => setCurrentView('dashboard')}
+              onClick={() => navigate('/')}
               className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
-                currentView === 'dashboard'
+                location.pathname === '/'
                   ? 'bg-amber-200 text-amber-800'
                   : 'text-amber-700 hover:bg-amber-100'
               }`}
@@ -155,9 +155,9 @@ function MainApp({ currentView, setCurrentView }) {
               📚 Álbumes
             </button>
             <button
-              onClick={() => setCurrentView('timeline')}
+              onClick={() => navigate('/timeline')}
               className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
-                currentView === 'timeline'
+                location.pathname === '/timeline'
                   ? 'bg-amber-200 text-amber-800'
                   : 'text-amber-700 hover:bg-amber-100'
               }`}
@@ -165,9 +165,9 @@ function MainApp({ currentView, setCurrentView }) {
               ⏰ Línea de Tiempo
             </button>
             <button
-              onClick={() => setCurrentView('mapa')}
+              onClick={() => navigate('/mapa')}
               className={`px-4 py-2 rounded-lg transition-all duration-200 font-medium ${
-                currentView === 'mapa'
+                location.pathname === '/mapa'
                   ? 'bg-amber-200 text-amber-800'
                   : 'text-amber-700 hover:bg-amber-100'
               }`}
