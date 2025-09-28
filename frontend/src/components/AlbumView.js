@@ -37,54 +37,10 @@ const AlbumView = () => {
     }
   };
 
-  const handleFileSelect = (e) => {
-    const files = Array.from(e.target.files);
-    setSelectedFiles(files);
-  };
-
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    if (selectedFiles.length === 0) {
-      setError('Selecciona al menos una foto');
-      return;
-    }
-
-    try {
-      setUploadLoading(true);
-      setError('');
-
-      const formData = new FormData();
-      selectedFiles.forEach(file => {
-        formData.append('files', file);
-      });
-      formData.append('album_id', albumId);
-      if (uploadData.descripcion) formData.append('descripcion', uploadData.descripcion);
-      if (uploadData.lugar_nombre) formData.append('lugar_nombre', uploadData.lugar_nombre);
-
-      const response = await api.post('/fotos/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-
-      // Recargar el álbum
-      await loadAlbum();
-      
-      // Limpiar formulario
-      setSelectedFiles([]);
-      setUploadData({ descripcion: '', lugar_nombre: '' });
-      setShowUploadDialog(false);
-      
-      // Reset file input
-      const fileInput = document.getElementById('photo-upload');
-      if (fileInput) fileInput.value = '';
-      
-    } catch (error) {
-      console.error('Error subiendo fotos:', error);
-      setError(error.response?.data?.detail || 'Error al subir las fotos');
-    } finally {
-      setUploadLoading(false);
-    }
+  const handleUploadComplete = (result) => {
+    // Recargar el álbum después de subir fotos
+    loadAlbum();
+    setError(''); // Limpiar cualquier error previo
   };
 
   const formatDate = (dateString) => {
