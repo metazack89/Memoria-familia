@@ -206,14 +206,10 @@ function MainApp({ currentView, setCurrentView }) {
       {/* Main Content */}
       <main className="flex-1 overflow-hidden">
         <Routes>
-          <Route path="/" element={
-            <div className="h-full">
-              {currentView === 'dashboard' && <Dashboard />}
-              {currentView === 'timeline' && <Timeline />}
-              {currentView === 'mapa' && <MapaRecuerdos />}
-              {currentView === 'familia' && <FamiliaSettings />}
-            </div>
-          } />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/timeline" element={<Timeline />} />
+          <Route path="/mapa" element={<MapaRecuerdos />} />
+          <Route path="/familia" element={<FamiliaSettings />} />
           <Route path="/album/:albumId" element={<AlbumView />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
